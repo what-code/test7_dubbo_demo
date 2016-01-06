@@ -8,6 +8,7 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!--此配置方式是dubbo 和 web服务的完美结合-->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener
 		</listener-class>
@@ -30,4 +31,20 @@
 		<servlet-name>dubbo</servlet-name>
 		<url-pattern>/http/*</url-pattern>
 	</servlet-mapping>
+	 
+	
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+	      <param-name>contextConfigLocation</param-name>
+	      <param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+	    </init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/web/*</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
